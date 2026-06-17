@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
   <meta name="description" content="Premium Pakistani Islamic Wedding Invitation - Join us for a luxurious celebration of love and faith">
   <title>✦ Premium Islamic Wedding ✦ Zainab & Fahad</title>
 
@@ -32,6 +32,148 @@
       overflow-x: hidden;
     }
 
+    /* === WEDDING ANIMATION BACKGROUND LAYER === */
+    #weddingAnimationBg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    /* Floating rose petals */
+    .wedding-petal {
+      position: absolute;
+      opacity: 0;
+      animation: floatWeddingPetal linear infinite;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+
+    @keyframes floatWeddingPetal {
+      0% {
+        transform: translateY(105vh) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      5% {
+        opacity: 0.7;
+      }
+      15% {
+        opacity: 0.5;
+      }
+      85% {
+        opacity: 0.5;
+      }
+      95% {
+        opacity: 0.1;
+      }
+      100% {
+        transform: translateY(-15vh) translateX(80px) rotate(540deg);
+        opacity: 0;
+      }
+    }
+
+    /* Golden particles */
+    .golden-particle {
+      position: absolute;
+      background: radial-gradient(circle, #D4AF37 0%, #F8F4EC 70%, transparent 100%);
+      border-radius: 50%;
+      opacity: 0;
+      animation: floatGoldenParticle ease-in-out infinite;
+      pointer-events: none;
+      will-change: transform, opacity;
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.6), 0 0 24px rgba(212, 175, 55, 0.3);
+    }
+
+    @keyframes floatGoldenParticle {
+      0% {
+        transform: translateY(105vh) translateX(0) scale(0.3);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.9;
+      }
+      30% {
+        opacity: 0.6;
+      }
+      70% {
+        opacity: 0.5;
+      }
+      90% {
+        opacity: 0.2;
+      }
+      100% {
+        transform: translateY(-10vh) translateX(-30px) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* Glowing lights / bokeh */
+    .bokeh-light {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,245,245,0.5) 0%, rgba(212,175,55,0.2) 50%, transparent 70%);
+      opacity: 0;
+      animation: bokehFloat ease-in-out infinite;
+      pointer-events: none;
+      will-change: transform, opacity;
+    }
+
+    @keyframes bokehFloat {
+      0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.5;
+      }
+      80% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-40px) scale(1.3);
+        opacity: 0;
+      }
+    }
+
+    /* Floating hearts */
+    .floating-heart {
+      position: absolute;
+      opacity: 0;
+      animation: floatHeart ease-in-out infinite;
+      pointer-events: none;
+      will-change: transform, opacity;
+      font-size: 20px;
+      color: #D4AF37;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(105vh) translateX(0) scale(0.5);
+        opacity: 0;
+      }
+      8% {
+        opacity: 0.7;
+      }
+      20% {
+        opacity: 0.4;
+      }
+      80% {
+        opacity: 0.3;
+      }
+      95% {
+        opacity: 0.05;
+      }
+      100% {
+        transform: translateY(-10vh) translateX(50px) scale(1.1);
+        opacity: 0;
+      }
+    }
+
     /* Floral Background */
     .floral-bg {
       position: fixed;
@@ -55,7 +197,7 @@
       background-repeat: repeat;
     }
 
-    /* Animated floating petals */
+    /* Animated floating petals (original) */
     .petal {
       position: fixed;
       pointer-events: none;
@@ -163,6 +305,33 @@
     .delay-100 { animation-delay: 0.1s; }
     .delay-200 { animation-delay: 0.2s; }
     .delay-300 { animation-delay: 0.3s; }
+
+    /* Hero section mobile optimization */
+    #hero {
+      background-attachment: scroll;
+      background-position: center center;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    @media (max-width: 640px) {
+      #hero h2 {
+        font-size: 2.8rem;
+        line-height: 1.2;
+      }
+      #hero .text-lg {
+        font-size: 1rem;
+      }
+      .hero-bg-edit {
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+    }
 
     /* Admin mode styles */
     .admin-mode .editable-element {
@@ -318,7 +487,6 @@
       display: block;
     }
 
-    /* Ensure content is above background */
     section, nav, footer {
       position: relative;
       z-index: 1;
@@ -326,6 +494,9 @@
   </style>
 </head>
 <body class="overflow-x-hidden" id="websiteBody">
+
+  <!-- === WEDDING ANIMATION BACKGROUND === -->
+  <div id="weddingAnimationBg"></div>
 
   <!-- Floral Background Layer -->
   <div class="floral-bg"></div>
@@ -372,23 +543,22 @@
         <div class="hidden md:flex space-x-8 text-sm font-medium text-gray-700">
           <a href="#hero" class="hover:text-primary transition">Home</a>
           <a href="#events" class="hover:text-primary transition">Events</a>
-          <a href="#rsvp" class="hover:text-primary transition">RSVP</a>
           <a href="#contact" class="hover:text-primary transition">Contact</a>
         </div>
         <div class="md:hidden text-primary text-2xl"><i class="fas fa-bars"></i></div>
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative w-full h-screen flex items-center justify-center bg-cover bg-center"
+    <!-- Hero Section - Mobile Optimized -->
+    <section id="hero" class="relative w-full min-h-screen flex items-center justify-center bg-cover bg-center"
              style="background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop');"
              id="heroSection">
       <div class="hero-bg-edit" onclick="changeHeroBackground()">
         <i class="fas fa-camera mr-2"></i> Change Hero Background
       </div>
-      <div class="text-center text-white px-4 max-w-4xl mx-auto">
+      <div class="text-center text-white px-4 max-w-4xl mx-auto w-full">
         <p class="text-lg md:text-xl tracking-[0.3em] uppercase mb-4 text-gold/80 font-light editable-element" data-type="text" data-id="heroSubtitle">Together with their families</p>
-        <h2 class="text-5xl md:text-7xl decorative-font text-gold drop-shadow-2xl mb-6">
+        <h2 class="text-5xl md:text-7xl decorative-font text-gold drop-shadow-2xl mb-6 leading-tight">
           <span class="editable-element" data-type="text" data-id="heroBrideName">Zainab</span>
           <span class="text-white/90">&</span>
           <span class="editable-element" data-type="text" data-id="heroGroomName">Fahad Ali</span>
@@ -444,104 +614,59 @@
       </div>
     </section>
 
-    <!-- Wedding Events -->
+    <!-- Wedding Events (Mehndi, Barat, Walima only) -->
     <section id="events" class="py-20 bg-white/40">
       <div class="max-w-7xl mx-auto px-6">
         <h2 class="text-5xl decorative-font text-center text-primary mb-16 editable-element" data-type="text" data-id="eventsHeading">Our Events</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center">
 
-          <!-- Mehndi -->
+          <!-- Mehndi Ceremony (First) -->
           <div class="glass-card p-6 text-center hover-lift fade-in" style="border-top: 4px solid #eab308;">
             <div class="event-image-container">
               <img src="https://images.unsplash.com/photo-1582719471384-9fcfd2bbfe20?q=80&w=1974&auto=format&fit=crop"
-                   alt="Mehndi" id="mehndiImage" data-type="image" data-id="mehndiImage">
+                   alt="Mehndi Ceremony" id="mehndiImage" data-type="image" data-id="mehndiImage">
               <div class="event-image-edit" onclick="changeImage('mehndiImage')">
                 <i class="fas fa-camera mr-2"></i> Change Image
               </div>
             </div>
             <i class="fas fa-leaf text-4xl text-yellow-600 mb-3"></i>
-            <h3 class="text-3xl decorative-font text-primary editable-element" data-type="text" data-id="mehndiTitle">Mehndi</h3>
+            <h3 class="text-3xl decorative-font text-primary editable-element" data-type="text" data-id="mehndiTitle">Mehndi Ceremony</h3>
             <p class="text-sm text-gray-500 mt-2 editable-element" data-type="text" data-id="mehndiDateTime">30 June 2026 • 7 PM</p>
-            <p class="font-medium editable-element" data-type="text" data-id="mehndiVenue">Haveli Garden, Vehari</p>
+            <p class="font-medium editable-element" data-type="text" data-id="mehndiVenue">Kachi Mandi, Vehari</p>
             <div class="mt-4 text-gold text-sm">Countdown: <span class="countdown font-bold" data-event="2026-06-30T19:00:00">--</span></div>
           </div>
 
-          <!-- Nikkah -->
-          <div class="glass-card p-6 text-center hover-lift fade-in" style="border-top: 4px solid #C9A84C;">
-            <div class="event-image-container">
-              <img src="https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?q=80&w=1974&auto=format&fit=crop"
-                   alt="Nikkah" id="nikkahImage" data-type="image" data-id="nikkahImage">
-              <div class="event-image-edit" onclick="changeImage('nikkahImage')">
-                <i class="fas fa-camera mr-2"></i> Change Image
-              </div>
-            </div>
-            <i class="fas fa-mosque text-4xl text-gold mb-3"></i>
-            <h3 class="text-3xl decorative-font text-primary editable-element" data-type="text" data-id="nikkahTitle">Nikkah</h3>
-            <p class="text-sm text-gray-500 mt-2 editable-element" data-type="text" data-id="nikkahDateTime">01 July 2026 • 12 PM</p>
-            <p class="font-medium editable-element" data-type="text" data-id="nikkahVenue">Central Mosque, Vehari</p>
-            <div class="mt-4 text-gold text-sm">Countdown: <span class="countdown font-bold" data-event="2026-07-01T12:00:00">--</span></div>
-          </div>
-
-          <!-- Barat -->
+          <!-- Barat Ceremony (Second) -->
           <div class="glass-card p-6 text-center hover-lift fade-in" style="border-top: 4px solid #800020;">
             <div class="event-image-container">
               <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop"
-                   alt="Barat" id="baratImage" data-type="image" data-id="baratImage">
+                   alt="Barat Ceremony" id="baratImage" data-type="image" data-id="baratImage">
               <div class="event-image-edit" onclick="changeImage('baratImage')">
                 <i class="fas fa-camera mr-2"></i> Change Image
               </div>
             </div>
             <i class="fas fa-crown text-4xl text-primary mb-3"></i>
-            <h3 class="text-3xl decorative-font text-primary editable-element" data-type="text" data-id="baratTitle">Barat</h3>
+            <h3 class="text-3xl decorative-font text-primary editable-element" data-type="text" data-id="baratTitle">Barat Ceremony</h3>
             <p class="text-sm text-gray-500 mt-2 editable-element" data-type="text" data-id="baratDateTime">01 July 2026 • 8 PM</p>
-            <p class="font-medium editable-element" data-type="text" data-id="baratVenue">Royal Palace Hall, Vehari</p>
+            <p class="font-medium editable-element" data-type="text" data-id="baratVenue">Abdullah Marquee 2-KM Khanewal Road Vehari</p>
             <div class="mt-4 text-gold text-sm">Countdown: <span class="countdown font-bold" data-event="2026-07-01T20:00:00">--</span></div>
           </div>
 
-          <!-- Walima -->
-          <div class="glass-card p-6 text-center hover-lift fade-in" style="border-top: 4px solid #f5f5f5;">
+          <!-- Walima Ceremony (Third) -->
+          <div class="glass-card p-6 text-center hover-lift fade-in" style="border-top: 4px solid #C9A84C;">
             <div class="event-image-container">
               <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=2070&auto=format&fit=crop"
-                   alt="Walima" id="walimaImage" data-type="image" data-id="walimaImage">
+                   alt="Walima Ceremony" id="walimaImage" data-type="image" data-id="walimaImage">
               <div class="event-image-edit" onclick="changeImage('walimaImage')">
                 <i class="fas fa-camera mr-2"></i> Change Image
               </div>
             </div>
-            <i class="fas fa-utensils text-4xl text-gray-500 mb-3"></i>
-            <h3 class="text-3xl decorative-font text-primary editable-element" data-type="text" data-id="walimaTitle">Walima</h3>
+            <i class="fas fa-utensils text-4xl text-gold mb-3"></i>
+            <h3 class="text-3xl decorative-font text-primary editable-element" data-type="text" data-id="walimaTitle">Walima Ceremony</h3>
             <p class="text-sm text-gray-500 mt-2 editable-element" data-type="text" data-id="walimaDateTime">02 July 2026 • 7 PM</p>
-            <p class="font-medium editable-element" data-type="text" data-id="walimaVenue">Crystal Marquee, Vehari</p>
+            <p class="font-medium editable-element" data-type="text" data-id="walimaVenue">Abdullah Marquee 2-KM Khanewal Road Vehari</p>
             <div class="mt-4 text-gold text-sm">Countdown: <span class="countdown font-bold" data-event="2026-07-02T19:00:00">--</span></div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RSVP Section -->
-    <section id="rsvp" class="py-20 max-w-3xl mx-auto px-6">
-      <div class="glass-card p-10 text-center fade-in">
-        <h2 class="text-4xl decorative-font text-primary mb-6 editable-element" data-type="text" data-id="rsvpHeading">RSVP</h2>
-
-        <!-- Name Input -->
-        <div class="mb-4 text-left">
-          <label class="block text-sm font-medium text-gray-600 mb-1 ml-2">Full Name *</label>
-          <input type="text" placeholder="Enter your full name" class="w-full p-3 rounded-xl border border-gold/30 bg-white/80 focus:outline-none focus:border-gold">
-        </div>
-
-        <!-- Phone Number Input -->
-        <div class="mb-4 text-left">
-          <label class="block text-sm font-medium text-gray-600 mb-1 ml-2">Phone Number *</label>
-          <input type="tel" placeholder="+92 329 1686036" class="w-full p-3 rounded-xl border border-gold/30 bg-white/80 focus:outline-none focus:border-gold">
-        </div>
-
-        <!-- Attendance Select -->
-        <div class="mb-6 text-left">
-          <label class="block text-sm font-medium text-gray-600 mb-1 ml-2">Will you attend?</label>
-          <select class="w-full p-3 rounded-xl border border-gold/30 bg-white/80 focus:outline-none focus:border-gold">
-            <option>✨ Yes, I will attend with joy</option>
-            <option>💔 Regretfully, I cannot attend</option>
-            <option>🤔 Maybe, I'll confirm later</option>
-          </select>
         </div>
       </div>
     </section>
@@ -571,6 +696,84 @@
 
   <script>
     (function() {
+      // =============================================
+      // WEDDING ANIMATION BACKGROUND - JAVASCRIPT
+      // =============================================
+      function createWeddingAnimation() {
+        const container = document.getElementById('weddingAnimationBg');
+        if (!container) return;
+        
+        // Clear any existing elements
+        container.innerHTML = '';
+        
+        // Helper to create elements
+        function createElement(tag, className, styles = {}) {
+          const el = document.createElement(tag);
+          el.className = className;
+          Object.assign(el.style, styles);
+          return el;
+        }
+        
+        // 1. Create floating rose petals (emoji based for performance)
+        const petalEmojis = ['🌸', '🌷', '🌺', '💮', '🏵️', '✿'];
+        for (let i = 0; i < 18; i++) {
+          const petal = createElement('div', 'wedding-petal', {
+            left: Math.random() * 100 + '%',
+            animationDuration: (Math.random() * 12 + 10) + 's',
+            animationDelay: (Math.random() * 12) + 's',
+            fontSize: (Math.random() * 18 + 14) + 'px',
+            opacity: '0'
+          });
+          petal.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+          container.appendChild(petal);
+        }
+        
+        // 2. Golden particles
+        for (let i = 0; i < 25; i++) {
+          const size = Math.random() * 8 + 4;
+          const particle = createElement('div', 'golden-particle', {
+            left: Math.random() * 100 + '%',
+            width: size + 'px',
+            height: size + 'px',
+            animationDuration: (Math.random() * 15 + 12) + 's',
+            animationDelay: (Math.random() * 15) + 's'
+          });
+          container.appendChild(particle);
+        }
+        
+        // 3. Bokeh / glowing lights
+        for (let i = 0; i < 12; i++) {
+          const size = Math.random() * 80 + 50;
+          const light = createElement('div', 'bokeh-light', {
+            left: Math.random() * 100 + '%',
+            top: Math.random() * 100 + '%',
+            width: size + 'px',
+            height: size + 'px',
+            animationDuration: (Math.random() * 10 + 8) + 's',
+            animationDelay: (Math.random() * 10) + 's'
+          });
+          container.appendChild(light);
+        }
+        
+        // 4. Floating hearts
+        for (let i = 0; i < 10; i++) {
+          const heart = createElement('div', 'floating-heart', {
+            left: Math.random() * 100 + '%',
+            animationDuration: (Math.random() * 14 + 12) + 's',
+            animationDelay: (Math.random() * 14) + 's',
+            fontSize: (Math.random() * 16 + 16) + 'px'
+          });
+          heart.innerHTML = '♥';
+          container.appendChild(heart);
+        }
+      }
+
+      // Initialize wedding animation
+      createWeddingAnimation();
+      
+      // =============================================
+      // EXISTING FUNCTIONALITY PRESERVED BELOW
+      // =============================================
       const ADMIN_PASSWORD = "wedding2026";
       let isAdminMode = false;
 
